@@ -1,0 +1,27 @@
+### list users
+GET http://localhost:3000/users
+
+### get user
+GET http://localhost:3000/users/dev_UblAQc-5SaeD3psT1_WYo
+
+### create user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john.doe@acme.com",
+    "password": "12345@321",
+    "dateOfBirth": "1990-01-01"
+}
+
+### update user
+PATCH http://localhost:3000/users/dev_UblAQc-5SaeD3psT1_WYo
+Content-Type: application/json
+
+{
+    "email": "john.doe@acme-nevada.com"
+}
+
+### delete user
+DELETE http://localhost:3000/users/dev_UblAQc-5SaeD3psT1_WYo

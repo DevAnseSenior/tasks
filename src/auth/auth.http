@@ -1,0 +1,16 @@
+### Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "john.doe@acme.com",
+    "password": "A12345@321c"
+}
+
+### Refresh token
+POST http://localhost:3000/auth/refresh
+Content-Type: application/json
+
+{
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfZjNZcDdZWjQtSV9IdEJSNEliN09PIiwiZW1haWwiOiJqb2huLmRvZUBhY21lLmNvbSIsImlhdCI6MTc3NjE5NjU0OCwiZXhwIjoxNzc2ODAxMzQ4fQ.yWapfFiYhBXElZLZ-0Vy329x--E9N7ztqlGe0q_zvXQ"
+}

@@ -2,7 +2,7 @@
 GET http://localhost:3000/users
 
 ### get user
-GET http://localhost:3000/users/dev_UblAQc-5SaeD3psT1_WYo
+GET http://localhost:3000/users/dev_XvT4alGDQjpK3F9RsZmmh
 
 ### create user
 POST http://localhost:3000/users
@@ -11,12 +11,12 @@ Content-Type: application/json
 {
     "name": "John Doe",
     "email": "john.doe@acme.com",
-    "password": "12345@321",
+    "password": "A12345@321c",
     "dateOfBirth": "1990-01-01"
 }
 
 ### update user
-PATCH http://localhost:3000/users/dev_UblAQc-5SaeD3psT1_WYo
+PATCH http://localhost:3000/users/dev_XvT4alGDQjpK3F9RsZmmh
 Content-Type: application/json
 
 {
@@ -24,4 +24,4 @@ Content-Type: application/json
 }
 
 ### delete user
-DELETE http://localhost:3000/users/dev_UblAQc-5SaeD3psT1_WYo
+DELETE http://localhost:3000/users/dev_XvT4alGDQjpK3F9RsZmmh

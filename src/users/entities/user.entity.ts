@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
-import { BeforeInsert, Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { Task } from "../../tasks/entities/task.entity";
 
 @Entity('users')
 export class User {
@@ -18,8 +19,11 @@ export class User {
     @Column()
     dateOfBirth!: string;
 
+    @OneToMany(() => Task, (task) => task.user)
+    tasks!: Task[];
+
     @BeforeInsert()
     generateId() {
-        this.id = `dev_${nanoid()}`;
+        this.id = `user_${nanoid()}`;
     }
 }

@@ -14,7 +14,7 @@ export class Task {
     description!: string
 
     @Column({ default: false })
-    completed!: string;
+    completed!: boolean;
 
     @Column({ nullable: false })
     dueDate!: string;

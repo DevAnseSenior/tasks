@@ -1,0 +1,49 @@
+### Vars
+@baseUrl = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyXzVHZ3NibWxObXJicWtIaDF0VjNkSCIsImVtYWlsIjoiam9obi5kb2VAYWNtZS5jb20iLCJpYXQiOjE3NzYzNDAwMzAsImV4cCI6MTc3NjQyNjQzMH0.jvrJoeay8x_a2ZeVUDRTYru1GE_DTFokc4b03iXWCdc
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "john.doe@acme.com",
+    "password": "A12345@321c"
+}
+
+### Create task
+POST {{baseUrl}}/tasks
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "title": "Estudy NestJS",
+    "description": "Complete auth module",
+    "dueDate": "2026-04-20"
+}
+
+### List tasks
+GET {{baseUrl}}/tasks
+Authorization: Bearer {{token}}
+
+### Find especific task
+GET {{baseUrl}}/tasks/task_PTe68k9raPXcbVqyNpK43
+Authorization: Bearer {{token}}
+
+### Update task
+PATCH {{baseUrl}}/tasks/task_PTe68k9raPXcbVqyNpK43
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "completed": false
+}
+
+### Toogle complete
+PATCH {{baseUrl}}/tasks/task_PTe68k9raPXcbVqyNpK43/toggle
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Delete task
+DELETE {{baseUrl}}/tasks/task_5XTITzR_wFF9R4iO_oaqm
+Authorization: Bearer {{token}}

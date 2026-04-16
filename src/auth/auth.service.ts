@@ -12,9 +12,9 @@ export class AuthService {
         private configService: ConfigService,
     ) { }
 
-    async validateUser(email: string, pass: string): Promise<any> {
+    async validateUser(email: string, password: string): Promise<any> {
         const user = await this.usersService.findByEmail(email);
-        if (user && await bcrypt.compare(pass, user.password)) {
+        if (user && await bcrypt.compare(password, user.password)) {
             const { password, ...result } = user;
             return result;
         }
@@ -48,7 +48,7 @@ export class AuthService {
             const user = await this.usersService.findOne(payload.sub);
 
             if (!user) {
-                throw new UnauthorizedException('User not found')
+                throw new UnauthorizedException('User not found');
             }
 
             return this.login(user);

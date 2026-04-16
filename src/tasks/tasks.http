@@ -1,6 +1,7 @@
-### Vars
-@baseUrl = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyXzVHZ3NibWxObXJicWtIaDF0VjNkSCIsImVtYWlsIjoiam9obi5kb2VAYWNtZS5jb20iLCJpYXQiOjE3NzYzNDAwMzAsImV4cCI6MTc3NjQyNjQzMH0.jvrJoeay8x_a2ZeVUDRTYru1GE_DTFokc4b03iXWCdc
+### VARS
+@baseUrl=http://localhost:3000
+@accessToken=past_access_token_here
+@taskId=past_task_id_here
 
 ### Login
 POST {{baseUrl}}/auth/login
@@ -13,7 +14,7 @@ Content-Type: application/json
 
 ### Create task
 POST {{baseUrl}}/tasks
-Authorization: Bearer {{token}}
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
@@ -24,15 +25,15 @@ Content-Type: application/json
 
 ### List tasks
 GET {{baseUrl}}/tasks
-Authorization: Bearer {{token}}
+Authorization: Bearer {{accessToken}}
 
 ### Find especific task
-GET {{baseUrl}}/tasks/task_PTe68k9raPXcbVqyNpK43
-Authorization: Bearer {{token}}
+GET {{baseUrl}}/tasks/{{taskId}}
+Authorization: Bearer {{accessToken}}
 
 ### Update task
-PATCH {{baseUrl}}/tasks/task_PTe68k9raPXcbVqyNpK43
-Authorization: Bearer {{token}}
+PATCH {{baseUrl}}/tasks/{{taskId}}
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
@@ -40,10 +41,10 @@ Content-Type: application/json
 }
 
 ### Toogle complete
-PATCH {{baseUrl}}/tasks/task_PTe68k9raPXcbVqyNpK43/toggle
-Authorization: Bearer {{token}}
+PATCH {{baseUrl}}/tasks/{{taskId}}/toggle
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 ### Delete task
-DELETE {{baseUrl}}/tasks/task_5XTITzR_wFF9R4iO_oaqm
-Authorization: Bearer {{token}}
+DELETE {{baseUrl}}/tasks/{{taskId}}
+Authorization: Bearer {{accessToken}}

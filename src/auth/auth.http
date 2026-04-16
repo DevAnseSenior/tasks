@@ -1,5 +1,9 @@
+### VARS
+@baseUrl=http://localhost:3000
+@refreshToken=paste_refresh_token_here
+
 ### Login
-POST http://localhost:3000/auth/login
+POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
@@ -8,9 +12,9 @@ Content-Type: application/json
 }
 
 ### Refresh token
-POST http://localhost:3000/auth/refresh
+POST {{baseUrl}}/auth/refresh
 Content-Type: application/json
 
 {
-    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZXZfZjNZcDdZWjQtSV9IdEJSNEliN09PIiwiZW1haWwiOiJqb2huLmRvZUBhY21lLmNvbSIsImlhdCI6MTc3NjE5NjU0OCwiZXhwIjoxNzc2ODAxMzQ4fQ.yWapfFiYhBXElZLZ-0Vy329x--E9N7ztqlGe0q_zvXQ"
+    "refresh_token": {{refreshToken}}
 }

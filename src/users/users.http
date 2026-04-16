@@ -1,8 +1,22 @@
+### VARS
+@baseUrl=http://localhost:3000
+@accessToken=past_access_token_here
+@userId=past_user_id_here
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "john.doe@acme.com",
+    "password": "A12345@321c"
+}
+
 ### list users
 GET http://localhost:3000/users
 
 ### get user
-GET http://localhost:3000/users/dev_XvT4alGDQjpK3F9RsZmmh
+GET http://localhost:3000/users/{{userId}}
 
 ### create user
 POST http://localhost:3000/users
@@ -16,7 +30,7 @@ Content-Type: application/json
 }
 
 ### update user
-PATCH http://localhost:3000/users/dev_XvT4alGDQjpK3F9RsZmmh
+PATCH http://localhost:3000/users/{{userId}}
 Content-Type: application/json
 
 {
@@ -24,4 +38,4 @@ Content-Type: application/json
 }
 
 ### delete user
-DELETE http://localhost:3000/users/dev_XvT4alGDQjpK3F9RsZmmh
+DELETE http://localhost:3000/users/{{userId}}

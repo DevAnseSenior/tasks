@@ -11,9 +11,9 @@ export class TasksController {
     @Post()
     create(
         @CurrentUser('id') userId: string,
-        @Body() createTaskDto: CreateTaskDto,
+        @Body() dto: CreateTaskDto,
     ) {
-        return this.tasksService.create(userId, createTaskDto);
+        return this.tasksService.create(userId, dto);
     }
 
     @Get()
@@ -33,9 +33,9 @@ export class TasksController {
     update(
         @CurrentUser('id') userId: string,
         @Param('id') id: string,
-        @Body() updateTaskDto: UpdateTaskDto
+        @Body() dto: UpdateTaskDto
     ) {
-        return this.tasksService.update(id, userId, updateTaskDto);
+        return this.tasksService.update(id, userId, dto);
     }
 
     @Patch(':id/toggle')

@@ -14,7 +14,7 @@ export class TasksService {
 
     async create(userId: string, dto: CreateTaskDto): Promise<Task> {
         const task = this.taskRepository.create({
-            ...CreateTaskDto,
+            ...dto,
             userId,
         });
         return this.taskRepository.save(task);
@@ -39,10 +39,10 @@ export class TasksService {
         return task;
     }
 
-    async update(id: string, userId: string, updateTaskDto: UpdateTaskDto): Promise<Task> {
+    async update(id: string, userId: string, dto: UpdateTaskDto): Promise<Task> {
         const task = await this.findOne(id, userId);
 
-        Object.assign(task, updateTaskDto);
+        Object.assign(task, dto);
 
         return this.taskRepository.save(task);
     }

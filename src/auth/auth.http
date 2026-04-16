@@ -1,6 +1,17 @@
 ### VARS
 @baseUrl=http://localhost:3000
-@refreshToken=paste_refresh_token_here
+@refreshToken=\"_paste_refresh_token_here_\"
+
+### Register user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john.doe@acme.com",
+    "password": "A12345@321c",
+    "dateOfBirth": "1990-01-01"
+}
 
 ### Login
 POST {{baseUrl}}/auth/login

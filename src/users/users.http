@@ -13,24 +13,28 @@ Content-Type: application/json
 }
 
 ### list users
-GET http://localhost:3000/users
+GET {{baseUrl}}/users
+Authorization: Bearer {{accessToken}}
 
 ### get user
-GET http://localhost:3000/users/{{userId}}
+GET {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{accessToken}}
 
 ### create user
-POST http://localhost:3000/users
+POST {{baseUrl}}/users
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
-    "name": "John Doe",
-    "email": "john.doe@acme.com",
+    "name": "Jane Doe",
+    "email": "jane.doe@acme.com",
     "password": "A12345@321c",
-    "dateOfBirth": "1990-01-01"
+    "dateOfBirth": "1992-11-03"
 }
 
 ### update user
-PATCH http://localhost:3000/users/{{userId}}
+PATCH {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
@@ -38,4 +42,5 @@ Content-Type: application/json
 }
 
 ### delete user
-DELETE http://localhost:3000/users/{{userId}}
+DELETE {{baseUrl}}/users/{{userId}}
+Authorization: Bearer {{accessToken}}

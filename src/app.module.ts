@@ -6,6 +6,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { User } from './users/entities/user.entity';
+import { TasksModule } from './tasks/tasks.module';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { Task } from './tasks/entities/task.entity';
 
 @Module({
   imports: [
@@ -19,15 +23,22 @@ import { User } from './users/entities/user.entity';
       useFactory: (configService: ConfigService) => ({
         type: 'sqlite',
         database: configService.get<string>('DB_DATABASE'),
-        entities: [User],
+        entities: [User, Task],
         synchronize: configService.get<string>('NODE_ENV') !== 'production',
         logging: configService.get<string>('NODE_ENV') === 'development',
       })
     }),
     UsersModule,
-    AuthModule
+    AuthModule,
+    TasksModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+    AppService
+  ],
 })
 export class AppModule {}

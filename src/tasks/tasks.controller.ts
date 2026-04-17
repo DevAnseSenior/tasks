@@ -3,6 +3,8 @@ import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { TasksService } from './tasks.service';
+import { UserRole } from '../users/entities/user.entity';
+import { Roles } from '../auth/decorators/roles.decorator';
 
 @Controller('tasks')
 export class TasksController {
@@ -16,16 +18,33 @@ export class TasksController {
         return this.tasksService.create(userId, dto);
     }
 
+    @Roles(UserRole.ADMIN)
+    @Get('admin/all')
+    findAllTasks() {
+        return this.tasksService.findAll();
+    }
+
     @Get()
-    findAll(@CurrentUser('id') userId: string) {
+    findMyTasks(@CurrentUser('id') userId: string) {
         return this.tasksService.findAllByUser(userId)
+    }
+
+    @Roles(UserRole.ADMIN)
+    @Get('user/:userId')
+    findTasksByUser(@Param('userId') userId: string) {
+        return this.tasksService.findAllByUser(userId);
     }
 
     @Get(':id')
     findOne(
         @CurrentUser('id') userId: string,
         @Param('id') id: string,
+        @CurrentUser('role') userRole: UserRole,
     ) {
+        if (userRole === UserRole.ADMIN) {
+            return this.tasksService.findOneById(id);
+        }
+
         return this.tasksService.findOne(id, userId)
     }
 

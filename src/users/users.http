@@ -16,6 +16,10 @@ Content-Type: application/json
 GET {{baseUrl}}/users
 Authorization: Bearer {{accessToken}}
 
+### Get profile
+GET {{baseUrl}}/me
+Authorization: Bearer {{accessToken}}
+
 ### get user
 GET {{baseUrl}}/users/{{userId}}
 Authorization: Bearer {{accessToken}}

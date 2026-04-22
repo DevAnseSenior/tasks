@@ -5,15 +5,16 @@ import { Public } from "./decorators/public.decorator";
 import { LocalAuthGuard } from "./guards/local-auth.guard";
 
 @Controller('auth')
-@Public()
 export class AuthController {
     constructor(private authService: AuthService) { }
 
+    @Public()
     @Post('register')
     create(@Body() dto: CreateUserDto) {
         return this.authService.register(dto);
     }
 
+    @Public()
     @UseGuards(LocalAuthGuard)
     @Post('login')
     @HttpCode(200)
@@ -21,6 +22,7 @@ export class AuthController {
         return this.authService.login(req.user);
     }
 
+    @Public()
     @Post('refresh')
     @HttpCode(200)
     async refresh(@Body('refresh_token') refreshToken: string) {

@@ -2,6 +2,15 @@
 @baseUrl=http://localhost:3000
 @refreshToken=\"_paste_refresh_token_here_\"
 
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@acme.com",
+    "password": "Admin@123"
+}
+
 ### Register user
 POST {{baseUrl}}/auth/register
 Content-Type: application/json
@@ -11,15 +20,6 @@ Content-Type: application/json
     "email": "john.doe@acme.com",
     "password": "A12345@321c",
     "dateOfBirth": "1990-01-01"
-}
-
-### Login
-POST {{baseUrl}}/auth/login
-Content-Type: application/json
-
-{
-    "email": "john.doe@acme.com",
-    "password": "A12345@321c"
 }
 
 ### Refresh token

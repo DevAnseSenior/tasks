@@ -5,8 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
-import { RolesGuard } from './auth/guards/roles.guard';
+import { CompositeAuthGuard } from './auth/guards/composite-auth.guard';
 import { Task } from './tasks/entities/task.entity';
 import { TasksModule } from './tasks/tasks.module';
 import { User } from './users/entities/user.entity';
@@ -37,7 +36,7 @@ import { UsersModule } from './users/users.module';
   providers: [
     {
       provide: APP_GUARD,
-      useClass: JwtAuthGuard,
+      useClass: CompositeAuthGuard,
     },
     AppService
   ],

@@ -1,14 +1,12 @@
-import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Patch, Post } from '@nestjs/common';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserRole } from './entities/user.entity';
 import { UsersService } from './users.service';
-import { CurrentUser } from '../auth/decorators/current-user.decorator';
-import { RolesGuard } from '../auth/guards/roles.guard';
 
 @Controller('users')
-@UseGuards(RolesGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 

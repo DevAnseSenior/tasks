@@ -1,7 +1,6 @@
-import { IsDateString, IsEmail, IsEnum, IsOptional, IsString, Matches, MaxLength, MinLength } from "class-validator";
-import { UserRole } from "../entities/user.entity";
+import { IsDateString, IsEmail, IsString, Matches, MaxLength, MinLength } from "class-validator";
 
-export class CreateUserDto {
+export class RegisterDto {
     @IsString()
     name!: string;
 
@@ -18,8 +17,4 @@ export class CreateUserDto {
 
     @IsDateString()
     dateOfBirth!: string;
-
-    @IsOptional()
-    @IsEnum(UserRole)
-    role?: UserRole;
 }
